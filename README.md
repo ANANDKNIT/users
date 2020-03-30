@@ -1,3 +1,11 @@
+## DEMO Link
+
+[https://dreamy-booth-861b87.netlify.com/](https://dreamy-booth-861b87.netlify.com/).
+
+To run this project locally first clone this repository 
+#### use `npm install`
+#### run this project using `npm start` 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

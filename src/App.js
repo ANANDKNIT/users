@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Users from "./components/Users";
+import UsersList from "./components/UsersList";
 const App = () => {
   return (
     <div className="App">
-      <Users />
+      <UsersList />
     </div>
   );
 };

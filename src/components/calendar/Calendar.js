@@ -4,8 +4,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/core/main.css";
 
-const Calender = props => {
+const Calendar = props => {
   return <FullCalendar plugins={[dayGridPlugin]} events={props.eventsList} />;
 };
 
-export default Calender;
+export default Calendar;

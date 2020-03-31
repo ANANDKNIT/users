@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getData = () => {
+export const getData = () => {
   return new Promise(resolve => {
     axios
       .get("/mockData.json")
@@ -9,9 +9,7 @@ const getData = () => {
       })
       .catch(error => {
         console.error(error);
-        return error
+        return error;
       });
   });
 };
-
-export {getData};

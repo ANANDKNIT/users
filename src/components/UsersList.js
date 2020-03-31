@@ -10,34 +10,12 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { green, pink } from "@material-ui/core/colors";
-import UserModal from "./UsersModal";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-    maxWidth: "20rem",
-    backgroundColor: theme.palette.background.paper
-  },
-  inline: {
-    display: "inline"
-  },
-  pink: {
-    color: theme.palette.getContrastText(pink[500]),
-    backgroundColor: pink[500]
-  },
-  green: {
-    color: "#fff",
-    backgroundColor: green[500]
-  },
-  listItem: {
-    cursor: "pointer"
-  }
-}));
+import UserModal from "./ActivtyModal";
 
 const Users = () => {
   const classes = useStyles();
 
-  const [users, selecteduser] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState({});
@@ -46,10 +24,9 @@ const Users = () => {
     setLoading(true);
     const response = await getData();
     if (response.status >= 200 && response.status < 400) {
-      console.log(response);
       setLoading(false);
 
-      selecteduser(response.data.members);
+      setUsers(response.data.members);
     }
   };
 
@@ -105,7 +82,11 @@ const Users = () => {
                   }
                 />
               </ListItem>
-              <Divider variant="inset" component="li" />
+              <Divider
+                variant="inset"
+                component="li"
+                className={classes.divider}
+              />
             </Fragment>
           );
         })}
@@ -120,3 +101,28 @@ const Users = () => {
 };
 
 export default Users;
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    maxWidth: "20rem",
+    backgroundColor: theme.palette.background.paper
+  },
+  inline: {
+    display: "inline"
+  },
+  pink: {
+    color: theme.palette.getContrastText(pink[500]),
+    backgroundColor: pink[500]
+  },
+  green: {
+    color: "#fff",
+    backgroundColor: green[500]
+  },
+  listItem: {
+    cursor: "pointer"
+  },
+  divider: {
+    marginRight: "2rem"
+  }
+}));

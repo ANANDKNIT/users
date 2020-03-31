@@ -60,7 +60,6 @@ export default function MaxWidthDialog(props) {
       " " + dateTime.substring(dateTime.lastIndexOf(" ") + 1, dateTime.length);
     const formattedDate = moment(date).format("YYYY-MM-DD");
     myEvents = [...myEvents, { title: title + time, date: formattedDate }];
-    console.log(myEvents);
     return formattedDate + time;
   };
   useEffect(() => {

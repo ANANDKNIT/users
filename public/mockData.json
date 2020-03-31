@@ -1,10 +1,50 @@
 {
 	"ok": true,
-	"members": [{
+	"members": [
+		{
+			"id": "W07QCRPAN",
+			"real_name": "Anand Kumar",
+			"tz": "Asia/Kanpur",
+			"activity_periods": [
+				{
+					"start_time": "Apr 1 2020  1:33PM",
+					"end_time": "Apr 1 2020 1:54PM"
+				},
+				{
+					"start_time": "Apr 3 2020  11:11AM",
+					"end_time": "Apr 3 2020 2:00PM"
+				},
+				{
+					"start_time": "Apr 16 2020  5:33PM",
+					"end_time": "Apr 16 2020 8:02PM"
+				}
+			]
+		},
+		{
+			"id": "W07QCRPAQ",
+			"real_name": "Peter Southgood",
+			"tz": "Asia/Delhi",
+			"activity_periods": [
+				{
+					"start_time": "Apr 5 2020  1:33PM",
+					"end_time": "Apr 5 2020 1:54PM"
+				},
+				{
+					"start_time": "Mar 1 2020  11:11AM",
+					"end_time": "Mar 1 2020 2:00PM"
+				},
+				{
+					"start_time": "Apr 15 2020  5:33PM",
+					"end_time": "Apr 15 2020 8:02PM"
+				}
+			]
+		},
+		{
 			"id": "W012A3CDE",
 			"real_name": "Egon Spengler",
 			"tz": "America/Los_Angeles",
-			"activity_periods": [{
+			"activity_periods": [
+				{
 					"start_time": "Feb 1 2020  1:33PM",
 					"end_time": "Feb 1 2020 1:54PM"
 				},
@@ -15,6 +55,10 @@
 				{
 					"start_time": "Mar 16 2020  5:33PM",
 					"end_time": "Mar 16 2020 8:02PM"
+				},
+				{
+					"start_time": "Apr 17 2020  5:33PM",
+					"end_time": "Apr 17 2020 8:02PM"
 				}
 			]
 		},
@@ -22,7 +66,8 @@
 			"id": "W07QCRPA4",
 			"real_name": "Glinda Southgood",
 			"tz": "Asia/Kolkata",
-			"activity_periods": [{
+			"activity_periods": [
+				{
 					"start_time": "Feb 1 2020  1:33PM",
 					"end_time": "Feb 1 2020 1:54PM"
 				},
@@ -33,6 +78,10 @@
 				{
 					"start_time": "Mar 16 2020  5:33PM",
 					"end_time": "Mar 16 2020 8:02PM"
+				},
+				{
+					"start_time": "Apr 19 2020  5:33PM",
+					"end_time": "Apr 19 2020 8:02PM"
 				}
 			]
 		}

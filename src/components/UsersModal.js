@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -8,6 +8,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import moment from "moment";
+import Calender from "./calender/Calender";
+import Typography from "@material-ui/core/Typography";
+import { pink, green } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -30,70 +33,101 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2),
     width: 200
+  },
+  actionButtons: {
+    margin: "1rem 2rem"
+  },
+  green: {
+    color: green[500]
+  },
+  pink: {
+    color: pink[500]
+  },
+  calender: {
+    marginTop: "2rem"
   }
 }));
 
 export default function MaxWidthDialog(props) {
-  console.log(props.data);
   const classes = useStyles();
-
-  const formatDate = dateTime => {
+  const [viewAll, setViewAll] = useState(false);
+  let myEvents = [];
+  const formatDate = (dateTime, title) => {
     const date = dateTime.substring(0, dateTime.lastIndexOf(" ") + 1);
-    const time = dateTime.substring(
-      dateTime.lastIndexOf(" ") + 1,
-      dateTime.length - 2
-    );
-    console.log(date);
-    console.log(time);
-    const formattedDate = moment(date + " " + time).format("YYYY-MM-DDTHH:mm");
-    return formattedDate;
+    const time =
+      " " + dateTime.substring(dateTime.lastIndexOf(" ") + 1, dateTime.length);
+    const formattedDate = moment(date).format("YYYY-MM-DD");
+    myEvents = [...myEvents, { title: title + time, date: formattedDate }];
+    return formattedDate + time;
+  };
+  useEffect(() => {
+    setViewAll(false);
+  }, [props]);
+  const renderDate = () => {
+    return props.data.activity_periods.map((item, index) => {
+      const startDate = formatDate(item.start_time, "start");
+      const endDate = formatDate(item.end_time, "end");
+      return (
+        <Fragment key={index}>
+          <TextField
+            id="datetime-start"
+            label="Start Time"
+            type="text"
+            value={startDate}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true
+            }}
+            disabled
+          />
+          <TextField
+            id="datetime-end"
+            label="End Time"
+            type="text"
+            value={endDate}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true
+            }}
+            disabled
+          />
+        </Fragment>
+      );
+    });
   };
   return (
     <React.Fragment>
       <Dialog
-        fullWidth={true}
-        maxWidth={"sm"}
+        maxWidth="md"
         open={props.open}
         onClose={props.hanndleClose}
         aria-labelledby="max-width-dialog-title"
       >
         <DialogTitle id="max-width-dialog-title">
-          User Name: {props.data.real_name}
+          <Typography className={classes.green}>
+            {"User Name: "}
+            <span className={classes.pink}>{props.data.real_name}</span>
+          </Typography>
         </DialogTitle>
         <DialogContent>
           <DialogContentText>Your Activity Period</DialogContentText>
-          {props.data.activity_periods &&
-            props.data.activity_periods.map((item, index) => {
-              const startDate = formatDate(item.start_time);
-              const endDate = formatDate(item.end_time);
-              return (
-                <Fragment key={index}>
-                  <TextField
-                    id="datetime-start"
-                    label="Start Time"
-                    type="datetime-local"
-                    value={startDate}
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                  <TextField
-                    id="datetime-end"
-                    label="End Time"
-                    type="datetime-local"
-                    value={endDate}
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                </Fragment>
-              );
-            })}
+          {props.data.activity_periods && renderDate()}
+          {viewAll && (
+            <div className={classes.calender}>
+              <Calender eventsList={myEvents} />
+            </div>
+          )}
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.actionButtons}>
+          <Button
+            onClick={() => setViewAll(!viewAll)}
+            variant="outlined"
+            color="primary"
+          >
+            {viewAll ? "Hide Calender" : "View All"}
+          </Button>
           <Button
             onClick={props.hanndleClose}
             variant="outlined"

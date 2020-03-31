@@ -115,13 +115,6 @@ const Users = () => {
         open={openModal}
         data={selectedUser}
       />
-      {/* id: "W012A3CDE"
-real_name: "Egon Spengler"
-tz: "America/Los_Angeles"
-activity_periods: Array(3)
-0: {start_time: "Feb 1 2020  1:33PM", end_time: "Feb 1 2020 1:54PM"}
-1: {start_time: "Mar 1 2020  11:11AM", end_time: "Mar 1 2020 2:00PM"}
-2: {start_time: "Mar 16 2020  5:33PM", end_time: "Mar 16 2020 8:02PM"} */}
     </div>
   );
 };

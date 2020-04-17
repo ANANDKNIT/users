@@ -55,7 +55,6 @@ const Chart = () => {
             intersect: true,
             callbacks: {
               title: (tooltipItem, data) => {
-                console.log(tooltipItem, data, "title");
                 if (tooltipItem[0].xLabel === "06/20") {
                   return "ttile :" + tooltipItem[0].yLabel;
                 } else {
@@ -64,7 +63,6 @@ const Chart = () => {
                 }
               },
               label: (tooltipItem, data) => {
-                console.log(tooltipItem, data, "label");
                 if (tooltipItem.xLabel === "06/20") {
                   return "custom tooltip lable:" + tooltipItem.xLabel;
                 } else {
